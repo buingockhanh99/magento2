@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magenest\Customer\Block\Account\Dashboard\Info $block */
+/** @var $escaper \Magento\Framework\Escaper */
+?>
+<style>
+    table td{
+        line-height: 200px;
+        font-size: 17px;
+    }
+</style>
+    <div class="block-content">
+        <div class="box box-information">
+            <div class="box-content">
+                <table>
+                    <tr>
+                        <th style="width: 300px">Avatar</th>
+                        <th style="width: 300px">Name</th>
+                        <th style="width: 350px">Email</th>
+                        <th style="width: 300px">Date</th>
+                        <th style="width: 300px">SDT</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="<?= $block->getIMG() ?>" alt="" width="200px" height="200px">
+                        </td>
+                        <td>
+                            <?= $block->getCustomer()->getLastname() ?>
+                        </td>
+                        <td>
+                            <?= $block->getCustomer()->getEmail() ?>
+                        </td>
+                        <td>
+                            <?= $block->getCustomer()->getDob() ?>
+                        </td>
+                        <td>
+                            <?= $block->getTelephone() ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-actions">
+                <a class="action edit" href="<?= $block->escapeUrl($block->getUrl('customer/account/edit')) ?>">
+                    <span><?= $block->escapeHtml(__('Edit')) ?></span>
+                </a>
+            </div>
+        </div>
+    </div>
+

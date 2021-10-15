@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="magenest_teacher_teacher" resource="default" engine="innodb" comment="magenest_teacher_teacher Table">
+		<column xsi:type="smallint" name="teacher_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="teacher_id"/>
+		</constraint>
+		<column name="name" nullable="true" xsi:type="text" comment="full name"/>
+		<column name="dob" nullable="true" xsi:type="date" comment="Date of Birth"/>
+		<column name="image" nullable="true" xsi:type="text" comment="image"/>
+		<column name="address" nullable="true" xsi:type="text" comment="address"/>
+	</table>
+</schema>

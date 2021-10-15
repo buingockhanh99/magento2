@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magenest_movie_actor_listing.magenest_movie_actor_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>magenest_movie_actor_columns</spinner>
+        <deps>
+            <dep>magenest_movie_actor_listing.magenest_movie_actor_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="magenest_movie_actor_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">actor_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Magenest_Movie::Actor</aclResource>
+        <dataProvider name="magenest_movie_actor_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>actor_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="magenest_movie_actor_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>actor_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="actor_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+
+        <column name="movie_name" class="\Magenest\Movie\Ui\Component\Listing\Column\JoinMovieActor">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Phim đóng</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="\Magenest\Movie\Ui\Component\Listing\Column\DirectorActions">
+            <settings>
+                <indexField>director_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

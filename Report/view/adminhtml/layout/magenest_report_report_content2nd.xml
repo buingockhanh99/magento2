@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Template"
+                   name="component_buttons" template=
+                       "Magenest_Report::toolbar/buttons.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Magenest\Report\Block\Content2nd\Content"
+                   name="content1"
+                   cacheable="false"
+                   template="Magenest_Report::content2nd/index.phtml" />
+        </referenceContainer>
+
+<!--        <referenceContainer name="content">-->
+<!--            <block class="Magenest\Customer\Block\Account\Dashboard\Info"-->
+<!--                   name="info"  as="address"-->
+<!--                   cacheable="false"-->
+<!--                   template="Magenest_Customer::account/dashboard/info.phtml" />-->
+<!--        </referenceContainer>-->
+
+    </body>
+</page>

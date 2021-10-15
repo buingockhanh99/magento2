@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MagePrince
+ * Copyright (C) 2020 Mageprince <info@mageprince.com>
+ *
+ * @package Mageprince_BuyNow
+ * @copyright Copyright (c) 2020 Mageprince (http://www.mageprince.com/)
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MagePrince <info@mageprince.com>
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <buynow>
+            <general>
+                <keep_cart_products>1</keep_cart_products>
+                <enable_list>1</enable_list>
+                <enable_view>1</enable_view>
+                <button_title>Buy Now</button_title>
+            </general>
+        </buynow>
+    </default>
+</config>

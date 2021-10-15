@@ -1,0 +1,73 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+
+<?php $helper = $this->helper(\Magenest\BuyNow\Helper\Data::class); ?>
+<?php $formId = $helper->getAddToCartFormId(); ?>
+<?php $buttonTitle1 = $helper->getButtonTitle() ?>
+
+<link rel="stylesheet" href="<?= $this->getViewFileUrl('Magenest_BuyNow::css/buynow.css')  ?>">
+
+<?php if ($_product->isSaleable()) : ?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity()) : ?>
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></label>
+                    <div class="control">
+                        <input type="button" value="-" class="button-minus" data-field="quantity">
+                        <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field">
+<!--                        <input type="number"-->
+<!--                               name="qty"-->
+<!--                               id="qty"-->
+<!--                               min="0"-->
+<!--                               value="--><?//= $block->getProductDefaultQty() * 1 ?><!--"-->
+<!--                               title="--><?//= $block->escapeHtmlAttr(__('Qty')) ?><!--"-->
+<!--                               class="input-text"-->
+<!--                               data-validate="--><?//= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?><!--"-->
+<!--                        />-->
+                        <input type="button" value="+" class="button-plus" data-field="quantity">
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
+                        class="action primary tocart"
+                        id="product-addtocart-button" disabled>
+                    <span><?= $block->escapeHtml($buttonTitle) ?></span>
+                </button>
+                <?= $block->getChildHtml('', true) ?>
+
+                <button type="submit"
+                        title="<?= $block->escapeHtml(__($buttonTitle1)) ?>"
+                        id="buy-now"
+                        class="action primary buy-now-btn"
+                        data-mage-init='
+            {
+                "Magenest_BuyNow/js/buynow": {
+                    "form": "#<?= $block->escapeHtml($formId); ?>"
+                }
+            }
+            '>
+                    <span><?= $block->escapeHtml(__($buttonTitle1)) ?></span>
+                </button>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+
+</script>

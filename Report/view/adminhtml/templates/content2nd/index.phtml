@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+
+/** @var \Magenest\Report\Block\Content2nd\Content $block */
+/** @var $escaper \Magento\Framework\Escaper */
+?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magenest_Report::css/style6.css')?>">
+<style>
+.table{
+    font-size: 20px;
+    font-weight: 15;
+
+}
+
+</style>
+<div style="text-align: center">
+    <h1><b style="font-size: 40px">Detail</b></h1>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th style="text-align: left">Name</th>
+        <th style="text-align: left">Numbers</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td scope="row">Numbers of Customers</td>
+        <td><?= $block->getCountCustomer() ?></td>
+    </tr>
+    <tr>
+        <td scope="row">Numbers of Products</td>
+        <td><?= $block->getCountProducts() ?></td>
+    </tr>
+    <tr>
+        <td scope="row">Numbers of Orders</td>
+        <td><?= $block->getCountSales() ?></td>
+    </tr>
+    <tr>
+        <td scope="row">Numbers of Invoices</td>
+        <td><?= $block->getCountInvoice() ?></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+

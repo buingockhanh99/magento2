@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Banner"
+             title="Banner"
+             module="Magenest_Chapter10"
+             sortOrder="30"
+             parent="Magenest::top_level"
+             resource="Magento_Backend::content"/>
+		<add id="Magenest_Banner"
+             title="Edit Banner"
+             module="Magenest_Chapter10"
+             sortOrder="40"
+             resource="Magento_Backend::content"
+             parent="Banner"
+             action="magenest_banner/banner/index"/>
+	</menu>
+</config>

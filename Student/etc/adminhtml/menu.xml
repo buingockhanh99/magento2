@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Magenest::top_level"
+             title="Magenest"
+             module="Magenest_Student"
+             sortOrder="10"
+             resource="Magento_Backend::content"/>
+
+
+        <add id="Magenest:Student"
+             title="Manage Student"
+             module="Magenest_Teacher"
+             sortOrder="30"
+             parent="Magenest::top_level"
+             resource="Magento_Backend::content"/>
+
+
+
+		<add id="Student"
+             title="Student"
+             module="Magenest_Student"
+             sortOrder="40"
+             resource="Magento_Backend::content"
+             parent="Magenest:Student"
+             action="magenest_student/student/index"/>
+	</menu>
+</config>

@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Magenest::movie"
+             title="Movie"
+             module="Magenest_Movie"
+             sortOrder="10"
+             parent="Magenest::top_level"
+             resource="Magento_Backend::content"/>
+		<add id="Magenest_Movie::Director"
+             title="Director"
+             module="Magenest_Movie"
+             sortOrder="1"
+             resource="Magento_Backend::content"
+             parent="Magenest::movie"
+             action="magenest_movie/Director/Index"/>
+        <add id="Magenest_Movie::Actor"
+             title="Actor"
+             module="Magenest_Movie"
+             sortOrder="2"
+             resource="Magenest_Movie::content"
+             parent="Magenest::movie"
+             action="magenest_movie/Actor/Index"/>
+        <add id="Magenest_Movie::Movie"
+             title="Movie"
+             module="Magenest_Movie"
+             sortOrder="3"
+             resource="Magenest_Movie::content"
+             parent="Magenest::movie"
+             action="magenest_movie/Movie/Index"/>
+        <add id="Magenest_Movie::movie_actor"
+             title="Movie_Actor"
+             module="Magenest_Movie"
+             sortOrder="4"
+             resource="Magenest_Movie::content"
+             parent="Magenest::movie"
+             action="magenest_movie/MovieActor/Index"/>
+	</menu>
+</config>

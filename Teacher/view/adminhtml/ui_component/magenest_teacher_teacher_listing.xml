@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                magenest_teacher_teacher_listing.teacher_teacher_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>teacher_teacher_columns</spinner>
+        <deps>
+            <dep>magenest_teacher_teacher_listing.teacher_teacher_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="teacher_teacher_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">teacher_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Magenest_Teacher::Teacher</aclResource>
+        <dataProvider name="teacher_teacher_listing_data_source"
+                      class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>teacher_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="teacher_teacher_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>teacher_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="teacher_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Full name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="dob">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">dob</label>
+            </settings>
+        </column>
+
+
+        <column name="image" class="Magenest\Teacher\Ui\Component\Listing\Column\Thumbnail"
+                component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Image</label>
+            </settings>
+        </column>
+
+        <column name="address">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">address</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Magenest\Teacher\Ui\Component\Listing\Column\TeacherActions">
+            <settings>
+                <indexField>teacher_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

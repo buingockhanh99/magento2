@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <referenceBlock name="customer_edit">
+            <container name="form.additional.info" as="form_additional_info">
+                <block  name="edit_avatar" class="Magenest\Customer\Block\Account\Dashboard\Info"
+                        template="Magenest_Customer::account/dashboard/editavatar.phtml"/>
+            </container>
+        </referenceBlock>
+
+<!--        <referenceContainer name="fieldset.edit.info.additional">-->
+<!--            <block  name="checkbox"-->
+<!--                   template="Magenest_Customer::account/dashboard/checkbox.phtml"/>-->
+<!--        </referenceContainer>-->
+    </body>
+</page>

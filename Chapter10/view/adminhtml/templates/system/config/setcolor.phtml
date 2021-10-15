@@ -1,0 +1,31 @@
+<?php
+
+$value = $block->getData('config_data')['setting/post/colorpicker'];
+
+
+
+?>
+<link rel="stylesheet" href="<?= $this->getViewFileUrl('Magenest_Chapter10::css/colorpicker.css')  ?>">
+
+
+<table class="admin__control-table" id="setting_post_colorpicker" data-bind="scope:'settingcolor'" >
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "settingcolor": {
+                        "component": "Magenest_Chapter10/js/setcolor",
+                        "data": <?php if($value != ""){ echo $value;} else {echo '""';}?>
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</table>
+
+
+
+

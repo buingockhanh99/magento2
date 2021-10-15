@@ -1,0 +1,26 @@
+<?php
+/**
+ * banner
+ *
+ * @copyright Copyright © 2021 Khanh. All rights reserved.
+ * @author    khanhthanhvh@gmail.com
+ */
+
+/** @var \Magenest\Chapter10\Block\Banner\Banner $block */
+?>
+
+
+<div class="navbar">
+    <?php
+    if ($block->getIMG() != 'null') {
+        echo "<div class='left'><img src='".$block->getIMG()."'></div>";
+        echo "<div class='right'><img src='".$block->getIMG()."'></div>";
+    }
+    ?>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+        <css src="Magenest_Chapter10::css/banner.css" />
+    </head>
+
+<body>
+    <referenceContainer name="header.container">
+        <block name="top.header" class="Magenest\Chapter10\Block\Header\Header"  template="Magenest_Chapter10::topheader.phtml" />
+    </referenceContainer>
+
+    <!--Banner-->
+    <referenceContainer name="page.wrapper">
+        <block name="banner" class="Magenest\Chapter10\Block\Banner\Banner"
+               template="Magenest_Chapter10::banner.phtml"/>
+    </referenceContainer>
+
+
+    <referenceContainer name="page.wrapper">
+        <block name="bannertop" class="Magenest\Chapter10\Block\Banner\Banner"
+               template="Magenest_Chapter10::bannertop.phtml" before="-"/>
+    </referenceContainer>
+</body>
+</page>

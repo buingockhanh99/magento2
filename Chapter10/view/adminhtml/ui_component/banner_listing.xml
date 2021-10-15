@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                banner_listing.banner_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>banner_columns</spinner>
+        <deps>
+            <dep>banner_listing.banner_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="banner_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">banner_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Magenest_Chapter10::Banner</aclResource>
+        <dataProvider name="banner_listing_data_source"
+                      class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>banner_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="banner_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>banner_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="banner_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name banner</label>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="enabled">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Enabled</label>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="title">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Title</label>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="images" class="Magenest\Chapter10\Ui\Component\Listing\Column\Thumbnail"
+                component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">images</label>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="content">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Content</label>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Magenest\Chapter10\Ui\Component\Listing\Column\Actions">
+            <settings>
+                <indexField>banner_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!--    <preference for="Magenest\Student\Api\StudentRepositoryInterface" type="Magenest\Student\Model\StudentRepository"/>-->
+<!--    <preference for="Magenest\Student\Api\Data\StudentInterface" type="Magenest\Student\Model\Data\Student"/>-->
+<!--    <preference for="Magenest\Student\Api\Data\StudentSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>-->
+    <!-- 1-->
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Movie\Grid\CollectionMovie" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_movie</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Movie\CollectionMovie</argument>
+        </arguments>
+    </virtualType>
+    <!--  2-->
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Actor\Grid\CollectionActor" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_actor</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Actor\CollectionActor</argument>
+        </arguments>
+    </virtualType>
+    <!--  3-->
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Director\Grid\CollectionDirector" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_director</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Director\CollectionDirector</argument>
+        </arguments>
+    </virtualType>
+    <!--  4  -->
+    <virtualType name="Magenest\Movie\Model\ResourceModel\MovieActor\Grid\CollectionMovieActor" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_movie_actor</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\MovieActor\CollectionMovieActor</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_movie_movie_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Movie\Grid\CollectionMovie</item>
+                <item name="magenest_movie_actor_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Actor\Grid\CollectionActor</item>
+                <item name="magenest_movie_director_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Director\Grid\CollectionDirector</item>
+                <item name="magenest_movie_movieactor_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\MovieActor\Grid\CollectionMovieActor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--  plugin  -->
+    <type name="Magento\Checkout\CustomerData\AbstractItem">
+        <plugin name="magenest_update_product_name" type="Magenest\Movie\Plugin\UpdateProductName" />
+    </type>
+</config>

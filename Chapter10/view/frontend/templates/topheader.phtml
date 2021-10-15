@@ -1,0 +1,32 @@
+<?php
+/**
+ * topheader
+ *
+ * @copyright Copyright © 2021 Khanh. All rights reserved.
+ * @author    khanhthanhvh@gmail.com
+ */
+/** @var \Magenest\Chapter10\Block\Header\Header $block */
+
+$value = $block->dataJSON();
+?>
+<div id="header-div" data-bind="scope:'header'" style="background: ">
+    <span data-bind="click: setColor" > Click</span>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+       {
+        "*": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "header": {
+                        "component": "Magenest_Chapter10/js/topheader",
+                        "data": <?php if($value != ""){ echo $value;} else {echo '""';}?>
+
+                    }
+                }
+            }
+        }
+       }
+   </script>
+
+</div>
+

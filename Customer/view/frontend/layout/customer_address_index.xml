@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceBlock name="address_grid">
+            <container name="pager" as="pager">
+                <block  name="edit_region" class="Magenest\Customer\Block\Account\Address\Index"
+                        template="Magenest_Customer::address/grid.phtml"/>
+            </container>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <add id="Magenest::report"
+             title="Report"
+             module="Magenest_Report"
+             sortOrder="60"
+             parent="Magenest::top_level"
+             resource="Magento_Backend::content"/>
+
+        <add id="Magenest::report1st"
+             title="content 1st"
+             module="Magenest_Report"
+             sortOrder="70"
+             resource="Magento_Backend::content"
+             parent="Magenest::report"
+             action="magenest_report/Report/Content1st"/>
+
+        <add id="Magenest::report2nd"
+             title="content 2nd"
+             module="Magenest_Report"
+             sortOrder="80"
+             resource="Magento_Backend::content"
+             parent="Magenest::report"
+             action="magenest_report/Report/Content2nd"/>
+
+        <add id="Magenest::report3rd"
+             title="content 3rd"
+             module="Magenest_Report"
+             sortOrder="80"
+             resource="Magento_Backend::content"
+             parent="Magenest::report"
+             action="magenest_report/Report/Content3rd"/>
+
+
+    </menu>
+</config>

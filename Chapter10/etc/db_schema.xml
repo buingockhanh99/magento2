@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="magenest_banner" resource="default" engine="innodb" comment="magenest_banner Table">
+		<column xsi:type="smallint" name="banner_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Banner Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="banner_id"/>
+		</constraint>
+		<column name="name" nullable="true" xsi:type="text" comment="name banner"/>
+		<column name="enabled" nullable="true" xsi:type="int" comment="enabled"/>
+        <column name="title" nullable="true" xsi:type="text" comment="title banner"/>
+		<column name="image" nullable="true" xsi:type="text" comment="image banner"/>
+		<column name="content" nullable="true" xsi:type="text" comment="content banner"/>
+	</table>
+</schema>

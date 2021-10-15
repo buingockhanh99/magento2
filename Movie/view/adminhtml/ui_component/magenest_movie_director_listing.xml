@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                magenest_movie_director_listing.magenest_movie_director_listing_data_source
+            </item>
+        </item>
+    </argument>
+
+    <settings>
+        <spinner>magenest_movie_director_columns</spinner>
+        <deps>
+            <dep>magenest_movie_director_listing.magenest_movie_director_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new</label>
+            </button>
+        </buttons>
+    </settings>
+
+    <dataSource name="magenest_movie_director_listing_data_source" component="Magento_Ui/js/grid/provider">
+
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">director_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+
+        <aclResource>Magenest_Movie::Director</aclResource>
+
+        <dataProvider name="magenest_movie_director_listing_data_source"
+                      class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>director_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+
+    <columns name="magenest_movie_director_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        magenest_movie_director_listing.magenest_movie_director_listing.magenest_movie__columns_editor
+                    </item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+
+        <column name="director_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">name</label>
+            </settings>
+        </column>
+
+        <column name="movie_name" class="\Magenest\Movie\Ui\Component\Listing\Column\JointableMovie">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">movie name</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="\Magenest\Movie\Ui\Component\Listing\Column\DirectorActions">
+            <settings>
+                <indexField>director_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

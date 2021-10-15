@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+
+    <table name="magenest_director" resource="default" engine="innodb" comment="magenest_director Table">
+        <column xsi:type="int" name="director_id" padding="6" unsigned="true" nullable="false" identity="true" comment="director_id"/>
+        <column name="name" nullable="true" xsi:type="text" comment="full name"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="director_id"/>
+        </constraint>
+
+    </table>
+
+
+    <table name="magenest_movie" resource="default" engine="innodb" comment="magenest_movie Table">
+        <column xsi:type="int" name="movie_id" padding="6" unsigned="true" nullable="false" identity="true" comment="movie_id"/>
+        <column name="name" nullable="true" xsi:type="text" comment="full name"/>
+        <column name="description" nullable="true" xsi:type="date" comment="Date of Birth"/>
+        <column name="rating" nullable="true" xsi:type="text" comment="image"/>
+        <column name="director_id" nullable="false" xsi:type="int" unsigned="true" comment="director_id"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="movie_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="magenest_movie_magenest_director"
+                    table="magenest_movie" column="director_id" referenceTable="magenest_director"
+                    referenceColumn="director_id" onDelete="CASCADE"/>
+    </table>
+
+
+
+    <table name="magenest_actor" resource="default" engine="innodb" comment="magenest_actor Table">
+        <column xsi:type="int" name="actor_id" padding="6" unsigned="true" nullable="false" identity="true" comment="actor_id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="actor_id"/>
+        </constraint>
+        <column name="name" nullable="true" xsi:type="text" comment="full name"/>
+    </table>
+
+    <table name="magenest_movie_actor" resource="default" engine="innodb" comment="magenest_movie_actor Table">
+        <column xsi:type="int" name="id" padding="6" unsigned="true" nullable="false" identity="true" comment="id"/>
+        <column xsi:type="int" name="movie_id" unsigned="true" nullable="false"  comment="movie_id"/>
+        <column name="actor_id" nullable="true" unsigned="true"  xsi:type="int" comment="actor_id"/>
+
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="magenest_movie_actor_magenest_movie"
+                    table="magenest_movie_actor" column="movie_id" referenceTable="magenest_movie"
+                    referenceColumn="movie_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="magenest_movie_actor_magenest_actor"
+                    table="magenest_movie_actor" column="actor_id" referenceTable="magenest_actor"
+                    referenceColumn="actor_id" onDelete="CASCADE"/>
+    </table>
+</schema>
+

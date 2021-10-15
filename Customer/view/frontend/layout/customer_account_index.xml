@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <referenceBlock name="customer_account_dashboard_info">
+            <container name="customer_account_dashboard_info_extra" as="customer.account.dashboard.info.extra"/>
+        </referenceBlock>
+
+        <referenceContainer name="customer_account_dashboard_info_extra">
+            <block class="Magenest\Customer\Block\Account\Dashboard\Info" name="edit_telephone"
+                   template="Magenest_Customer::account/dashboard/info.phtml"/>
+        </referenceContainer>
+
+    </body>
+</page>

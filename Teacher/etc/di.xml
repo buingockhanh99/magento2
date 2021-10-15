@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!--    <preference for="Magenest\Student\Api\StudentRepositoryInterface" type="Magenest\Student\Model\StudentRepository"/>-->
+<!--    <preference for="Magenest\Student\Api\Data\StudentInterface" type="Magenest\Student\Model\Data\Student"/>-->
+<!--    <preference for="Magenest\Student\Api\Data\StudentSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>-->
+    <virtualType name="Magenest\Teacher\Model\ResourceModel\Teacher\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_teacher_teacher</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Teacher\Model\ResourceModel\Teacher\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="teacher_teacher_listing_data_source" xsi:type="string">Magenest\Teacher\Model\ResourceModel\Teacher\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Magenest\Teacher\TeacherImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">teacher/tmp/images</argument>
+            <argument name="basePath" xsi:type="string">teacher/images</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magenest\Teacher\Controller\Adminhtml\Teacher\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magenest\Teacher\TeacherImageUpload</argument>
+        </arguments>
+    </type>
+
+</config>

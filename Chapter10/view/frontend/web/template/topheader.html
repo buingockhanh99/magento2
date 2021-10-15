@@ -1,0 +1,14 @@
+<div class="wrapper" style="width: 1300px ;margin: 0 auto;padding-right: 10px; padding-left:  50px;">
+    <div style="width: 1300px ;float: left">
+        <div style="width: 150px; float: left; line-height: 30px">
+            <span><strong>Color Background</strong></span>
+        </div>
+        <div style="width: 1150px; float: right">
+<!--            <select data-bind="foreach: listModel(), click : clickOption">-->
+<!--                <option data-bind="text : textOption , attr:  {value : valueCode}"></option>-->
+<!--            </select>-->
+            <select data-bind="options: listModel(), optionsValue: 'codeValue', optionsText: 'color', click: setColor, value: valueSelect" class="select"></select>
+        </div>
+    </div>
+</div>
+

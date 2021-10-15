@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magenest_sales_export_light.magenest_export_oder_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>sales_order_export_columns</spinner>
+        <deps>
+            <dep>magenest_sales_export_light.magenest_export_oder_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="magenest_export_oder_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">item_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Magento_Sales::sales_order</aclResource>
+        <dataProvider class="Magenest\Sales\Ui\Component\Listing\Column\DataProvider"
+                      name="magenest_export_oder_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>main_table.item_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">magenest_sales_export_light.magenest_sales_export_light.sales_order_export_columns.ids</item>
+                </item>
+            </argument>
+        </exportButton>
+        <filterSearch name="fulltext"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+
+    <columns name="sales_order_export_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        magenest_sales_export_light.magenest_sales_export_light.sales_order_export_columns.actions
+                    </item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">view</item>
+                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">item_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+
+        <column name="item_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+                <visible>true</visible>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+
+        <column name="increment_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID Order</label>
+            </settings>
+        </column>
+
+        <column name="sku">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">SKU</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+
+        <column name="customer_lastname">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Last Name</label>
+            </settings>
+        </column>
+        <column name="customer_email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="qty_ordered">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Qty</label>
+            </settings>
+        </column>
+        <column name="price">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Price</label>
+            </settings>
+        </column>
+        <column name="nameweb">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name Website</label>
+            </settings>
+        </column>
+
+    </columns>
+</listing>

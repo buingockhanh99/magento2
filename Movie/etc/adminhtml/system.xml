@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="400">
+            <label>Magenest</label>
+        </tab>
+
+        <section id="movie" translate="label" type="text"
+                 sortOrder="100" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Movie</label>
+            <tab>magenest</tab>
+            <resource>Packt_HelloWorld::config_movie</resource>
+            <group id="moviepage" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Movie page settings</label>
+                <field id="header_title" translate="label"
+                       type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Header title</label>
+                </field>
+
+                <field id="is_enabled" translate="label"
+                       type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[<p style="color:red" >Yes/No</p>]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+                <field id="is_enable" translate="label"
+                       type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Custom Select Field </label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="magenestmovie" translate="label"
+                       type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1" >
+                    <label>Rows in table “magenest_movie”</label>
+                    <attribute type="readonly">readonly</attribute>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\Config\Form\Field\Disable</frontend_model>
+                    <depends>
+                        <field id="movie/moviepage0/is_enable">1</field>
+                    </depends>
+                </field>
+                <field id="magenestactor" translate="label"
+                       type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Rows in table “magenest_actor”</label>
+                    <attribute type="readonly">readonly</attribute>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\Config\Form\Field\Disable</frontend_model>
+                    <depends>
+                        <field id="movie/moviepage/is_enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="button" translate="label" type="button" sortOrder="35" showInDefault="1">
+                    <label>Export Configuration</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\Button\Reloadbutton</frontend_model>
+                    <depends>
+                        <field id="caching_application">1</field>
+                    </depends>
+                </field>
+
+
+            </group>
+        </section>
+
+    </system>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!--    <update handle="customer_account"/>-->
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Magenest\Customer\Block\Index\Index"
+                   name="index_cs"
+                   template="Magenest_Customer::customer/customer.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="div.sidebar.additional" remove="true"/>
+
+    </body>
+</page>
+
+
+
+
+
+

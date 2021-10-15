@@ -1,0 +1,22 @@
+.navbar {
+    overflow: visible;
+    position: fixed;
+    top: 350px;
+    width: 100%;
+}
+
+
+.left {
+    float: left;
+    margin-left: 100px;
+}
+
+.right {
+    float: right;
+    margin-right: 100px;
+}
+
+#imgtop{
+    height: 100px;
+    width: 100%;
+}
